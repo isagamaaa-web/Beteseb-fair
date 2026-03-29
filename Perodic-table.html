@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Periodic table – Beteseb Academy</title>
+  <link rel="stylesheet" href="perodic.css">
+</head>
+<body>
+<div class="card">
+  <div class="toolbar">
+    <div class="title">
+      <h1>⚛️ periodic · 118</h1>
+      <p>high‑res online image · direct from web</p>
+    </div>
+    <div class="controls">
+      <button class="btn" id="zoomInBtn"><span>+</span> Zoom in</button>
+      <button class="btn" id="zoomOutBtn"><span>–</span> Zoom out</button>
+      <button class="btn reset" id="resetBtn">⟲ reset</button>
+    </div>
+  </div>
+
+  <!-- image container: pan & zoom -->
+  <div class="image-stage" id="imageStage">
+    <img id="periodic-img"
+         src="periodic.png"
+         alt="Your periodic table image"
+         draggable="false">
+
+    <div class="loading-message" id="loadingMsg" style="display: none;">🌍 loading from web …</div>
+    <!-- error placeholder injected by js if needed -->
+  </div>
+
+  <div class="status-bar">
+    <span class="badge"><span>🧪</span> 118 elements · color groups</span>
+    <span class="zoom-level" id="zoomDisplay">100%</span>
+    <span>🖱️ drag · pinch · keys +/-/0</span>
+  </div>
+  <div class="footer-note">
+    © Beteseb Academy · image: <a href="#" id="reloadLink">reload</a> · sciencenotes.org
+  </div>
+</div>
+
+<script src="perodic.js"></script>
+
+</body>
+</html>

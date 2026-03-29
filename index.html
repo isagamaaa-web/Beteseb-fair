@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Beteseb Academy - Periodic Table</title>
+  <meta name="description" content="Comprehensive reference for all 118 chemical elements with discovery dates. Search, filter and view professional element cards and detailed facts." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div>
+          <h1>Periodic Table — Elements</h1>
+          <p class="lead">Interactive reference for all 118 chemical elements with discovery dates</p>
+        </div>
+      </div>
+      
+      <!-- PDF Download Button -->
+      <button id="downloadPdf" class="pdf-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2a1 1 0 0 1 1 1v10.586l2.293-2.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 1 1 1.414-1.414L11 13.586V3a1 1 0 0 1 1-1zM5 18a1 1 0 1 0 0 2h14a1 1 0 1 0 0-2H5z"/>
+        </svg>
+        Download Elements Guide (TXT)
+      </button>
+    </header>
+
+    <div class="controls">
+      <div class="search" role="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="opacity:0.7;margin-right:8px"><path d="M21 21l-4.35-4.35" stroke="white" stroke-opacity="0.6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="11" cy="11" r="6" stroke="white" stroke-opacity="0.6" stroke-width="1.5"></circle></svg>
+        <input id="searchInput" placeholder="Search by name, symbol, atomic number or property — e.g. 'gold' or 'Au'" aria-label="Search elements" />
+        <button id="clearBtn" class="btn" style="margin-left:12px">Clear</button>
+      </div>
+
+      <div class="filters">
+        <select id="categoryFilter" class="select" aria-label="Filter by category">
+          <option value="all">All categories</option>
+        </select>
+        <select id="sortSelect" class="select" aria-label="Sort elements">
+          <option value="number">Sort: Atomic number</option>
+          <option value="name">Sort: Name (A–Z)</option>
+          <option value="symbol">Sort: Symbol (A–Z)</option>
+          <option value="discovery">Sort: Discovery Year</option>
+        </select>
+      </div>
+    </div>
+    <h4 id="pop"> First of all what is periodic table? The periodic table is a chart that organizes all chemical elements by their atomic number and properties.
+       It helps show patterns in how elements behave, making it easier to understand and predict chemical reactions.
+</h4>
+    <a href="Perodic-table.html">
+      <button type="button" class="bbtn">Periodic Table</button>
+    </a>
+    
+    <main>
+      <div id="resultCount" class="search-hint" style="margin-bottom:10px">Loading 118 elements...</div>
+      <div id="grid" class="grid" role="list"></div>
+    </main>
+    
+    <h2>Click here to open Periodic Table<br>👇👇👇👇</h2>
+    <a href="Perodic-table.html">
+      <button type="button" class="bbtn">Periodic Table</button>
+    </a>
+    
+    <footer>©️2025 : Beteseb Academy<br>
+     <p id="pp"> Beteseb is a professional educational platform that delivers clear
+      , well-structured content in science and programming.
+       It simplifies complex concepts through engaging explanations and organized resources,
+ helping students build strong understanding and develop essential skills in an accessible and effective way.
+     </p>
+
+    </footer>
+  </div>
+
+  <!-- Modal -->
+  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-hidden="true">
+    <div class="modal" role="document">
+      <div class="modal-grid">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;gap:8px">
+          <div class="big-symbol" id="modalSymbol">H</div>
+          <div class="chip" id="modalNumber">1</div>
+          <div class="chip" id="modalCategory">Nonmetal</div>
+          <div class="chip" id="modalDiscovery">Discovered: 1766</div>
+        </div>
+        
+        <div>
+          <h2 id="modalName">Hydrogen (H)</h2>
+          <div class="discovery-info" id="modalDiscoverer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+            Discovered by: Henry Cavendish
+          </div>
+          <div class="facts" id="modalSummary">Summary content</div>
+          <hr style="margin:12px 0;border-color:rgba(255,255,255,0.03)" />
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <div class="chip" id="modalCan">Can: form water, fuel</div>
+            <div class="chip" id="modalCannot">Cannot: exist monatomic</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:flex-end;margin-top:14px">
+        <button id="closeModal" class="btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Chatbot -->
+  <button class="chatbot-toggler will-change-transform">
+    <span>🤖</span>
+    <span>✕</span>
+  </button>
+  
+  <div class="chatbot will-change-opacity">
+    <header>
+      <h2>Chemistry AI Assistant</h2>
+      <span class="close-btn">✕</span>
+    </header>
+    
+    <div class="chatbox">
+      <div class="chat incoming">
+        <span>🧪</span>
+        <p>Hello! I'm your Chemistry AI Assistant. I have access to all 118 elements on this website. Ask me anything about any element! For example: "Tell me everything about Hydrogen" or "What is the discovery date of Gold?"</p>
+      </div>
+    </div>  
+    <div class="chat-input">
+      <textarea placeholder="Ask a question about any elements that are found on this website..." required></textarea>
+      
+      <div class="input-buttons">
+        <!-- Camera/Upload Button -->
+        <span class="camera-btn" title="Upload photo">🖼️</span>
+        <!-- Send Button -->
+        <span id="send-btn">➤</span>
+      </div>
+    </div>
+    
+    <!-- Hidden file input for photo upload -->
+    <input type="file" id="photoUpload" accept="image/*" capture="environment" class="hidden-file-input" />
+  </div>
+<script src="script.js"></script>
+</body>
+</html>
